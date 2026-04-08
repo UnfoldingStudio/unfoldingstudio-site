@@ -17,6 +17,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  scroll-margin-top: 80px;
+}
+
 html,
 body {
   margin: 0;
@@ -56,7 +60,7 @@ textarea {
 /* header */
 
 .site-header {
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 
 .topbar {
@@ -92,15 +96,15 @@ textarea {
 /* hero */
 
 .hero {
-  max-width: 760px;
-  margin: 88px auto 0;
-  text-align: center;
+  max-width: 520px;
+  margin: 48px 0 0;
+  text-align: left;
 }
 
 .eyebrow {
-  margin: 0 0 14px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -115,21 +119,21 @@ h1 {
 }
 
 .intro {
-  max-width: 430px;
-  margin: 18px auto 0;
-  font-size: 14px;
-  line-height: 1.9;
-  color: var(--soft);
+  max-width: 360px;
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
 }
 
 .hero-link {
-  margin: 20px 0 0;
+  margin: 14px 0 0;
 }
 
 .hero-link a {
   color: var(--muted);
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-size: 12px;
+  letter-spacing: 0.01em;
 }
 
 .hero-link a:hover {
@@ -139,7 +143,7 @@ h1 {
 /* sections */
 
 .section {
-  margin-top: 76px;
+  margin-top: 56px;
 }
 
 .section-head {
@@ -158,9 +162,9 @@ h1 {
 
 h2 {
   margin: 0;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 /* gallery */
@@ -168,7 +172,7 @@ h2 {
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  gap: 8px;
 }
 
 .card {
@@ -191,7 +195,9 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   transition: opacity 0.45s ease;
 }
