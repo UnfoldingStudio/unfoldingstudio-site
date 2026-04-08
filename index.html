@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UnfoldingStudio</title>
 
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,7 +20,7 @@
   <div class="page">
     <header class="site-header">
       <div class="topbar">
-        <a href="#" class="logo">UnfoldingStudio</a>
+        <a href="index.html" class="logo">UnfoldingStudio</a>
 
         <nav class="main-nav">
           <a href="#archive">Archive</a>
@@ -23,9 +28,13 @@
           <div class="dropdown">
             <button class="dropbtn" type="button">Music ▾</button>
             <div class="dropdown-content">
-              <a href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215" target="_blank" rel="noopener noreferrer">Main playlist</a>
-              <a href="#">Night listening</a>
-              <a href="#">Slow listening</a>
+              <a
+                href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Current listening
+              </a>
             </div>
           </div>
 
@@ -34,15 +43,25 @@
       </div>
 
       <div class="hero">
-        <p class="eyebrow">Independent archive</p>
-        <h1>UnfoldingStudio</h1>
-        <p class="intro">Exploring ideas through curiosity, research, and shared inspiration.</p>
-        <p class="hero-link">
-          <a href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215" target="_blank" rel="noopener noreferrer">
-            Current listening →
-          </a>
-        </p>
-      </div>
+         <div class="hero-image">
+    <img src="favicon.png" alt="UnfoldingStudio" />
+  </div>
+
+  <p class="eyebrow">Independent archive</p>
+
+  <h1>UnfoldingStudio</h1>
+
+  <p class="intro">
+    Exploring ideas through curiosity, research and shared inspiration.
+  </p>
+
+  <p class="hero-link">
+    <a href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215" target="_blank">
+      Current listening →
+    </a>
+  </p>
+
+</div>
     </header>
 
     <main>
@@ -53,38 +72,71 @@
         </div>
 
         <div class="gallery">
-          <div class="card"><img src="images/img1.jpg" alt="Archive image 1" /></div>
-          <div class="card"><img src="images/img2.jpg" alt="Archive image 2" /></div>
-          <div class="card"><img src="images/img3.jpg" alt="Archive image 3" /></div>
-          <div class="card"><img src="images/img4.jpg" alt="Archive image 4" /></div>
-          <div class="card"><img src="images/img5.jpg" alt="Archive image 5" /></div>
-          <div class="card"><img src="images/img6.jpg" alt="Archive image 6" /></div>
-        </div>
-      </section>
+          <a href="item1.html" class="card">
+            <img src="images/img1.jpg" alt="Archive image 1" />
+            <div class="overlay"><span>Japanese Hieizan monk warrior outfit</span></div>
+          </a>
 
-      <section id="music" class="section">
-        <div class="section-head">
-          <span>02</span>
-          <h2>Music</h2>
-        </div>
+          <a href="item2.html" class="card">
+            <img src="images/img2.jpg" alt="Scienza e Fede by Beppe Giacobbe" />
+            <div class="overlay"><span>Scienza e Fede</span></div>
+          </a>
 
-        <div class="music-panel">
-          <a href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215" target="_blank" rel="noopener noreferrer">
-            Open main playlist
+          <a href="item3.html" class="card">
+            <img src="images/img3.jpg" alt="Title Three" />
+            <div class="overlay"><span>Paper cutout</span></div>
+          </a>
+
+          <a href="item4.html" class="card">
+            <img src="images/img4.jpg" alt="Title Four" />
+            <div class="overlay"><span>Title Four</span></div>
+          </a>
+
+          <a href="item5.html" class="card">
+            <img src="images/img5.jpg" alt="Title Five" />
+            <div class="overlay"><span>Title Five</span></div>
+          </a>
+
+          <a href="item6.html" class="card">
+            <img src="images/img6.jpg" alt="Title Six" />
+            <div class="overlay"><span>Title Six</span></div>
           </a>
         </div>
       </section>
 
-      <section id="about" class="section about">
-        <div class="section-head">
-          <span>03</span>
-          <h2>About</h2>
-        </div>
+      <section id="music" class="section">
+  <div class="section-head">
+    <span>02</span>
+    <h2>Music</h2>
+  </div>
 
-        <p>
-          Exploring ideas through curiosity, research, and shared inspiration.
-        </p>
+  <div class="music-panel">
+    <p class="music-text">
+      Free-form radio for your ears,<br>
+      a playlist that keeps growing<br>
+      and moves at its own pace ✧
+    </p>
+
+    <a href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215" target="_blank">
+      open Spotify playlist →
+    </a>
+       </div>
       </section>
+
+      <section id="about" class="section about">
+  <div class="section-head">
+    <span>03</span>
+    <h2>About</h2>
+  </div>
+
+  <p>
+    Exploring ideas through curiosity, research and shared inspiration.<br><br>
+
+    This is an open archive, a collection of images, objects, and references gathered over time through observation and interest.<br><br>
+  </p>
+
+  <p class="signature">By Irene Capuzzo ✴</p>
+</section>
     </main>
   </div>
 </body>
