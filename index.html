@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UnfoldingStudio</title>
 
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="CSS/reset.css">
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/reset.css" />
+  <link rel="stylesheet" href="CSS/style.css" />
 </head>
-
 <body>
   <div class="page">
 
@@ -26,7 +25,7 @@
           <a href="#archive">Archive</a>
           <a href="#music">Music</a>
           <a href="#about">About</a>
-          <a href="https://www.instagram.com/unfoldingstvdio" target="_blank">Instagram</a>
+          <a href="https://www.instagram.com/unfoldingstvdio" target="_blank" rel="noopener noreferrer">Instagram</a>
         </nav>
       </div>
 
@@ -40,13 +39,18 @@
         </p>
 
         <p class="hero-link">
-          <a href="#">Current listening →</a>
+          <a
+            href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Current listening →
+          </a>
         </p>
       </div>
     </header>
 
     <main>
-
       <section id="archive" class="section">
         <div class="section-head">
           <span>01</span>
@@ -54,15 +58,74 @@
         </div>
 
         <div class="gallery">
-          <a class="card"><img src="images/img1.JPG"></a>
-          <a class="card"><img src="images/img2.JPG"></a>
-          <a class="card"><img src="images/img3.JPG"></a>
-          <a class="card"><img src="images/img4.JPG"></a>
-          <a class="card"><img src="images/img5.JPG"></a>
-          <a class="card"><img src="images/img6.JPG"></a>
+          <a class="card" href="item1.html">
+            <img src="images/img1.jpg" alt="Title One" />
+            <div class="overlay"><span>Title One</span></div>
+          </a>
+
+          <a class="card" href="item2.html">
+            <img src="images/img2.jpg" alt="Scienza e Fede by Beppe Giacobbe" />
+            <div class="overlay"><span>Scienza e Fede by Beppe Giacobbe</span></div>
+          </a>
+
+          <a class="card" href="item3.html">
+            <img src="images/img3.jpg" alt="Title Three" />
+            <div class="overlay"><span>Title Three</span></div>
+          </a>
+
+          <a class="card" href="item4.html">
+            <img src="images/img4.JPG" alt="Title Four" />
+            <div class="overlay"><span>Title Four</span></div>
+          </a>
+
+          <a class="card" href="item5.html">
+            <img src="images/img5.JPG" alt="Title Five" />
+            <div class="overlay"><span>Title Five</span></div>
+          </a>
+
+          <a class="card" href="item6.html">
+            <img src="images/img6.JPG" alt="Title Six" />
+            <div class="overlay"><span>Title Six</span></div>
+          </a>
         </div>
       </section>
 
+      <section id="music" class="section">
+        <div class="section-head">
+          <span>02</span>
+          <h2>Music</h2>
+        </div>
+
+        <div class="music-panel">
+          <p class="music-text">
+            free-form radio for your ears,<br>
+            a playlist that keeps growing<br>
+            and moves at its own pace ✧
+          </p>
+
+          <a
+            href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open playlist →
+          </a>
+        </div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="section-head">
+          <span>03</span>
+          <h2>About</h2>
+        </div>
+
+        <p>
+          Exploring ideas through curiosity, research, and shared inspiration.<br><br>
+          This is an open archive, a collection of images, objects, and references gathered over time through observation and interest.
+        </p>
+
+        <p class="signature">by Irene Capuzzo</p>
+      </section>
     </main>
   </div>
 </body>
