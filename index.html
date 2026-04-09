@@ -128,5 +128,20 @@
       </section>
     </main>
   </div>
+
+  <script>
+const elements = document.querySelectorAll('.section, .card, .hero');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.1 });
+
+elements.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
