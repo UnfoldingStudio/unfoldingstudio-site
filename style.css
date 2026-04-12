@@ -325,8 +325,7 @@ h2 {
 .detail-image-wrap img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .detail-meta h1 {
@@ -398,4 +397,19 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.section,
+.card,
+.hero {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.section.show,
+.card.show,
+.hero.show {
+  opacity: 1;
+  transform: translateY(0);
 }
