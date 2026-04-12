@@ -10,13 +10,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Instrument+Serif&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="CSS/reset.css" />
-  <link rel="stylesheet" href="CSS/style.css?v=8" />
+  <link rel="stylesheet" href="CSS/style.css?v=10" />
 </head>
+
 <body>
   <div class="cursor"></div>
+
   <div class="page">
 
+    <!-- HEADER -->
     <header class="site-header">
       <div class="topbar">
         <a href="index.html" class="logo">UnfoldingStudio 𖧧</a>
@@ -30,7 +34,10 @@
       </div>
     </header>
 
+    <!-- MAIN -->
     <main>
+
+      <!-- ARCHIVE -->
       <section id="archive" class="section">
         <div class="section-head">
           <span>01</span>
@@ -38,6 +45,7 @@
         </div>
 
         <div class="gallery">
+
           <a class="card" href="item1.html">
             <img src="images/bronze_culverins.jpg" alt="Bronze culverins with engravings" />
             <div class="overlay"><span>Bronze culverins with engravings</span></div>
@@ -49,7 +57,7 @@
           </a>
 
           <a class="card" href="item3.html">
-            <img src="images/comb1.png" alt="Combs and Case "IAMAICA"" />
+            <img src="images/comb1.png" alt='Combs and Case "IAMAICA"' />
             <div class="overlay"><span>Combs and Case "IAMAICA"</span></div>
           </a>
 
@@ -72,9 +80,11 @@
             <img src="images/img2.jpg" alt="Scienza e Fede" />
             <div class="overlay"><span>Scienza e Fede</span></div>
           </a>
+
         </div>
       </section>
 
+      <!-- MUSIC -->
       <section id="music" class="section">
         <div class="section-head">
           <span>02</span>
@@ -98,6 +108,7 @@
         </div>
       </section>
 
+      <!-- ABOUT -->
       <section id="about" class="section about">
         <div class="section-head">
           <span>03</span>
@@ -110,40 +121,44 @@
         </p>
 
         <p class="signature">
-         <a href="https://instagram.com/irene.capuzzo" target="_blank"> Irene Capuzzo </a>
+          <a href="https://instagram.com/irene.capuzzo" target="_blank" rel="noopener noreferrer">
+            Irene Capuzzo
+          </a>
         </p>
       </section>
+
     </main>
   </div>
 
+  <!-- ANIMATIONS SCRIPT -->
   <script>
-const elements = document.querySelectorAll('.section, .card, .hero');
+    const elements = document.querySelectorAll('.section, .card, .hero');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.1 });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
 
-elements.forEach(el => observer.observe(el));
+    elements.forEach(el => observer.observe(el));
 
-let lastScroll = 0;
-const header = document.querySelector('.site-header');
+    let lastScroll = 0;
+    const header = document.querySelector('.site-header');
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
 
-  if (currentScroll > lastScroll && currentScroll > 50) {
-    header.classList.add('hide');
-  } else {
-    header.classList.remove('hide');
-  }
+      if (currentScroll > lastScroll && currentScroll > 50) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
 
-  lastScroll = currentScroll;
-});
-</script>
+      lastScroll = currentScroll;
+    });
+  </script>
 
 </body>
 </html>
