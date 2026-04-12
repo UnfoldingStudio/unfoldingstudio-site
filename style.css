@@ -13,11 +13,6 @@
   box-sizing: border-box;
 }
 
-::selection {
-  background: var(--text);
-  color: var(--bg);
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -35,9 +30,7 @@ body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  letter-spacing: -0.01em;
+  font-family: "Space Grotesk", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -48,9 +41,6 @@ img {
 }
 
 a {
-  font-family: "Inter", sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.02em;
   color: inherit;
   text-decoration: none;
 }
@@ -86,11 +76,6 @@ textarea {
   font-size: 20px;
   font-weight: 400;
   letter-spacing: -0.02em;
-  transition: opacity 0.3s ease;
-}
-
-.logo:hover {
-  opacity: 0.6;
 }
 
 .main-nav {
@@ -111,8 +96,8 @@ textarea {
 /* hero */
 
 .hero {
-  max-width: 480px;
-  margin: 80px 0 0;
+  max-width: 520px;
+  margin: 48px 0 0;
   text-align: left;
 }
 
@@ -126,19 +111,18 @@ textarea {
 
 h1 {
   margin: 0;
-  font-size: clamp(42px, 7vw, 72px);
+  font-size: clamp(48px, 8vw, 88px);
   font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
   word-break: break-word;
-  font-family: "Instrument Serif", serif;
 }
 
 .intro {
-  max-width: 340px;
-  margin: 18px 0 0;
+  max-width: 360px;
+  margin: 12px 0 0;
   font-size: 13px;
-  line-height: 1.9;
+  line-height: 1.7;
   color: var(--muted);
 }
 
@@ -180,13 +164,6 @@ h2 {
   margin: 0;
   font-size: 18px;
   font-weight: 400;
-  letter-spacing: -0.02em;
-  font-family: "Instrument Serif", serif;
-}
-
-.price {
-  font-family: "Instrument Serif", serif;
-  font-size: 28px;
   letter-spacing: -0.01em;
 }
 
@@ -194,21 +171,8 @@ h2 {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 8px;
-}
-
-@media (max-width: 900px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-  }
 }
 
 .card {
@@ -222,7 +186,7 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease, filter 0.6s ease;
+  transition: transform 0.45s ease, filter 0.45s ease, opacity 0.45s ease;
 }
 
 .overlay {
@@ -231,8 +195,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   transition: opacity 0.45s ease;
@@ -248,8 +212,9 @@ h2 {
 }
 
 .card:hover img {
-  transform: scale(1.06);
-  filter: brightness(0.85);
+  transform: scale(1.04);
+  filter: blur(3px);
+  opacity: 0.88;
 }
 
 .card:hover .overlay {
@@ -392,50 +357,8 @@ h2 {
   }
 }
 
-.hero,
-.section,
-.card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section {
-  animation-delay: 0.2s;
-  margin-top: 80px;
-}
-
-.card {
-  animation-delay: 0.3s;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.section-head h2::after {
-  content: "";
-  display: block;
-  width: 0%;
-  height: 1px;
-  background: var(--text);
-  margin-top: 6px;
-  transition: width 0.6s ease;
-}
-
-.section:hover h2::after {
-  width: 40px;
-}
-
-p {
-  font-weight: 300;
-  letter-spacing: 0.01em;
+.detail-image-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }

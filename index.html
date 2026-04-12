@@ -19,7 +19,7 @@
 
     <header class="site-header">
       <div class="topbar">
-        <a href="index.html" class="logo">UnfoldingStudio</a>
+        <a href="index.html" class="logo">UnfoldingStudio 𖧧</a>
 
         <nav class="main-nav">
           <a href="#archive">Archive</a>
@@ -27,26 +27,6 @@
           <a href="#about">About</a>
           <a href="https://www.instagram.com/unfoldingstvdio" target="_blank" rel="noopener noreferrer">Instagram</a>
         </nav>
-      </div>
-
-      <div class="hero">
-        <p class="eyebrow">Independent archive 𖧧</p>
-
-        <h1>UnfoldingStudio</h1>
-
-        <p class="intro">
-          Exploring ideas through curiosity, research and shared inspiration.
-        </p>
-
-        <p class="hero-link">
-          <a
-            href="https://open.spotify.com/playlist/4QbDTAmdg0NXesslip5a4b?si=8bfdbef64b984215"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Current listening →
-          </a>
-        </p>
       </div>
     </header>
 
@@ -141,6 +121,21 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 elements.forEach(el => observer.observe(el));
+
+let lastScroll = 0;
+const header = document.querySelector('.site-header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 50) {
+    header.classList.add('hide');
+  } else {
+    header.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
+});
 </script>
 
 </body>
