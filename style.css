@@ -335,9 +335,8 @@ h2 {
 .detail-image-wrap img {
   width: 100%;
   height: auto;
-  display: block;
-  background: none;
-  object-fit: contain;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 
 .detail-meta {
@@ -345,11 +344,10 @@ h2 {
 }
 
 .detail-meta h1 {
-  font-size: clamp(24px, 2.8vw, 40px);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.04em;
   margin-bottom: 18px;
-  text-wrap: balance;
 }
 
 .detail-meta p {
