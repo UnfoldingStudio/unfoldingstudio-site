@@ -22,26 +22,26 @@
     <div class="detail-content">
 
       <div class="detail-image-wrap">
-<img src="images/cadaques1.png" />
-<img src="images/cadaques2.png" />
-<img src="images/cadaques3.png" />
-<img src="images/cadaques4.png" />
-<img src="images/cadaques5.png" />
-<img src="images/cadaques6.png" />
-<img src="images/cadaques7.png" />
-<img src="images/cadaques8.png" />
-<img src="images/cadaques9.png" />
-<img src="images/cadaques10.png" />
-<img src="images/cadaques11.png" />
-<img src="images/cadaques12.png" />
-<img src="images/cadaques13.png" />
-<img src="images/cadaques14.png" />
-<img src="images/cadaques15.png" />
-<img src="images/cadaques16.png" />
-<img src="images/cadaques17.png" />
-<img src="images/cadaques18.png" />
-<img src="images/cadaques19.png" />
-<img src="images/cadaques20.png" />
+<img src="images/cadaques1.jpg" />
+<img src="images/cadaques2.jpg" />
+<img src="images/cadaques3.jpg" />
+<img src="images/cadaques4.jpg" />
+<img src="images/cadaques5.jpg" />
+<img src="images/cadaques6.jpg" />
+<img src="images/cadaques7.jpg" />
+<img src="images/cadaques8.jpg" />
+<img src="images/cadaques9.jpg" />
+<img src="images/cadaques10.jpg" />
+<img src="images/cadaques11.jpg" />
+<img src="images/cadaques12.jpg" />
+<img src="images/cadaques13.jpg" />
+<img src="images/cadaques14.jpg" />
+<img src="images/cadaques15.jpg" />
+<img src="images/cadaques16.jpg" />
+<img src="images/cadaques17.jpg" />
+<img src="images/cadaques18.jpg" />
+<img src="images/cadaques19.jpg" />
+<img src="images/cadaques20.jpg" />
 
 </div>
 
@@ -56,6 +56,24 @@
     </div>
 
   </div>
+
+  <script>
+  const reveals = document.querySelectorAll('.reveal');
+
+  function revealOnScroll() {
+    reveals.forEach((el) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 80) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
 
 </body>
 </html>
