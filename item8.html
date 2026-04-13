@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item 8</title>
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <link rel="stylesheet" href="CSS/reset.css" />
+  <link rel="stylesheet" href="CSS/style.css?v=9" />
+</head>
+<body>
+
+  <div class="detail-page">
+
+    <header class="detail-topbar">
+      <a href="index.html" class="logo">UnfoldingStudio</a>
+      <a href="index.html#archive" class="back-link">← Back</a>
+    </header>
+
+    <div class="detail-content">
+
+      <div class="detail-image-wrap">
+<img src="images/img2.jpg" />
+
+</div>
+
+      <div class="detail-meta">
+        <h1>Scienza e Fede, illustration by Beppe Giacobbe</h1>
+
+        <p>Some of my scans from ‘Cadaqués’ by Valérie Prot, published by Equator and designed by Pierrot.</p>
+
+        <p>Shot in the photographer’s hometown, these black and white Polaroids capture a quiet, blurred, almost suspended coastline, like a dream.</p>
+    </div>
+
+    </div>
+
+  </div>
+
+  <script>
+  const reveals = document.querySelectorAll('.reveal');
+
+  function revealOnScroll() {
+    reveals.forEach((el) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 80) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
