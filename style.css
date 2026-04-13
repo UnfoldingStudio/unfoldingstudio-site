@@ -26,11 +26,28 @@ body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
+}
+
+h1, h2, .logo {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: -0.04em;
+}
+
+.logo {
+  font-size: 22px;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 400;
 }
 
 img {
@@ -479,3 +496,16 @@ h2 {
     font-size: 24px;
   }
 }
+
+/* HOME MOBILE: 2 immagini per riga */
+@media (max-width: 700px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .card {
+    aspect-ratio: 4 / 5;
+  }
+}
+
