@@ -479,3 +479,21 @@ h2 {
     font-size: 24px;
   }
 }
+
+/* MOBILE - immagini meno invasive */
+
+@media (max-width: 700px) {
+
+  .detail-image-wrap {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .detail-image-wrap img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+
+}
