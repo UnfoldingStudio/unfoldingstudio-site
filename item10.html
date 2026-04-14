@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item 9</title>
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <link rel="stylesheet" href="CSS/reset.css" />
+  <link rel="stylesheet" href="CSS/style.css?v=9" />
+</head>
+<body>
+
+  <div class="detail-page">
+
+    <header class="detail-topbar">
+      <a href="index.html" class="logo">UnfoldingStudio</a>
+      <a href="index.html#archive" class="back-link">← Back</a>
+    </header>
+
+    <div class="detail-content">
+
+      <div class="detail-image-wrap">
+<img src="images/snow_goggles.jpg" />
+
+</div>
+
+      <div class="detail-meta">
+        <h1>Snow goggles</h1>
+
+        <p>Snow goggles are a type of eyewear traditionally used by the Inuit and the Yupik peoples of the Arctic to prevent snow blindness.</p>
+
+        <p>The goggles are traditionally made of driftwood, bone, walrus ivory, or caribou antler. The workpiece is carved to fit the wearer's face, and one or more narrow horizontal slits are carved through the front. The goggles fit tightly against the face so that the only light entering is through the slits. They achieve this by crafting an adjustable head strap made out of sinew, leather, or rawhide. Soot is sometimes applied to the inside to help cut down on glare. The slits are made narrow not only to reduce the amount of light entering but also to improve the visual acuity."</p>
+    </div>
+
+    </div>
+
+  </div>
+
+  <script>
+  const reveals = document.querySelectorAll('.reveal');
+
+  function revealOnScroll() {
+    reveals.forEach((el) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 80) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">×</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<script>
+  const images = Array.from(document.querySelectorAll('.detail-image-wrap img'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn = document.getElementById('lightboxClose');
+  const prevBtn = document.querySelector('.lightbox-prev');
+  const nextBtn = document.querySelector('.lightbox-next');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+</script>
+
+</body>
+</html>
+
+
+

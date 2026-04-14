@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item 9</title>
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <link rel="stylesheet" href="CSS/reset.css" />
+  <link rel="stylesheet" href="CSS/style.css?v=9" />
+</head>
+<body>
+
+  <div class="detail-page">
+
+    <header class="detail-topbar">
+      <a href="index.html" class="logo">UnfoldingStudio</a>
+      <a href="index.html#archive" class="back-link">← Back</a>
+    </header>
+
+    <div class="detail-content">
+
+      <div class="detail-image-wrap">
+<img src="images/paper_gem1.jpg" />
+<img src="images/paper_gem2.jpg" />
+<img src="images/paper_gem4.jpg" />
+<img src="images/paper_gem5.jpg" />
+<img src="images/paper_gem6.jpg" />
+<img src="images/paper_gem7.jpg" />
+<img src="images/paper_gem8.jpg" />
+<img src="images/paper_gem9.jpg" />
+<img src="images/paper_gem10.jpg" />
+<img src="images/paper_gem11.jpg" />
+<img src="images/paper_gem12.jpg" />
+<img src="images/paper_gem3.jpg" />
+
+</div>
+
+      <div class="detail-meta">
+        <h1>Early Modern Blackwork Prints</h1>
+
+        <p>Early modern prints are recycled waste products of everyday life. Paper was fashioned from soiled and tattered linen, which was boiled and beaten into pulp, then strained and dried in sheets. Ink was an admixture of lampblack or soot blended with oil. Rags and grime thus became the material basis for print media, once wrought through the printmaker’s resurrective craft. As printmakers of this period continued to discover, this act of applying ink to paper with a printing matrix and a press could be accomplished via an astonishing multitude of techniques, some quite esoteric.</p>
+
+        <p>One unusual technique, called blackwork, resulted from the adaptation of an enameling process known as champlevé. In traditional metalwork, champlevé entails filling shaped voids in a metal object, such as a brooch or box lid, with a powder of colored glass and sometimes, metal. The object is then heated to melt and bind these fillings, and, once cooled, polished until smooth and an image or pattern becomes crisply legible. To create blackwork prints, shaped voids are gouged into a copper printing plate (rather than a piece of jewelry or decorative object) and filled with a concoction of thick ink (rather than colored glass). When pressed onto paper, the inked voids print areas of pure black that contrast with the unprinted paper; the resulting image was often an intricate pattern or lacy ornamental motif. Artists who made these prints frequently combined blackwork with the linear compositional elements of traditional burin engraving.</p>
+
+        <p>Blackwork prints often signaled explicitly the technique’s origins in jewelry design. The earliest known print of this kind is a design for a ring and bezel. Insect and flower motifs are common in blackwork prints, as they are in jewelry. Many of these prints present designs for hypothetical objects like pendants, brooches, or earrings. As they imagined these objects that could be, but as yet did not exist, blackwork engravers were determined to make their own works — paper prints — precious and full of visual interest.
+        
+        <p>In addition to functioning as design proposals, these printed motifs could also manifest more purely as compositional experiments that toyed with the pictorial elements of scale, perspectival space, and contour. As Madeleine Viljoen suggests, the blackwork process itself provided specific content to many of these prints, invoking the air and gusts that produced the soot of printing ink and the creative spiritus of engraving. In one print by Toutin, for instance, a blackwork pendant hovers above a furnace tended to by a goldsmith and an assistant who clutches bellows.</p>
+
+        <p>The production of blackwork prints spanned only a few decades, from the mid-1580s through the 1620s. Shifting tastes in fashion and ornament are the commonly understood causes of blackwork’s decline, but that does not explain why these engravers were either unsuccessful or uninterested in adapting blackwork to other types of imagery. Perhaps blackwork was too bound up in increasingly out-of-vogue designs for audiences — and makers — to conceive of the labor-intensive technique as fit for anything else. Nevertheless, for a time, these prints’ creators appropriated both the design principles and craft techniques of jewelry-making for graphic art, and in so doing, created objects of virtuosity and whimsy.</p>
+        </p>
+    </div>
+
+    </div>
+
+  </div>
+
+  <script>
+  const reveals = document.querySelectorAll('.reveal');
+
+  function revealOnScroll() {
+    reveals.forEach((el) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 80) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">×</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<script>
+  const images = Array.from(document.querySelectorAll('.detail-image-wrap img'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn = document.getElementById('lightboxClose');
+  const prevBtn = document.querySelector('.lightbox-prev');
+  const nextBtn = document.querySelector('.lightbox-next');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+</script>
+
+</body>
+</html>
+
