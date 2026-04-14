@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore — UnfoldingStudio</title>
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="CSS/reset.css" />
+  <link rel="stylesheet" href="CSS/style.css" />
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #090909;
+      color: #ece2d3;
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body.dragging {
+      cursor: grabbing;
+    }
+
+    .topbar-inf {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    .topbar-inf a,
+    .topbar-inf span {
+      pointer-events: auto;
+      font-size: 13px;
+      color: #b9aa95;
+      background: rgba(9, 9, 9, 0.72);
+      padding: 10px 14px;
+      border: 1px solid rgba(236, 226, 211, 0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .topbar-inf a:hover {
+      color: #ece2d3;
+    }
+
+    .viewport {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .cell {
+      position: absolute;
+      display: block;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      transition: transform 0.22s ease;
+      transform-origin: center center;
+      will-change: transform, left, top;
+    }
+
+    .cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .cell:hover {
+      z-index: 5;
+    }
+
+    .hint {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 30;
+      font-size: 12px;
+      color: rgba(236, 226, 211, 0.7);
+      background: rgba(9, 9, 9, 0.72);
+      padding: 10px 14px;
+      border: 1px solid rgba(236, 226, 211, 0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .topbar-inf a,
+      .topbar-inf span {
+        font-size: 12px;
+      }
+
+      .hint {
+        font-size: 11px;
+        bottom: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar-inf">
+    <a href="index.html">← Back</a>
+    <span>Explore</span>
+  </div>
+
+  <main class="viewport" id="viewport"></main>
+
+  <div class="hint">Drag freely — tap an image to open its page</div>
+
+  <script>
+    const images = [
+      { src: "images/bronze_culverins.jpg", link: "item1.html" },
+
+      { src: "images/concubine-imperiale.png", link: "item2.html" },
+      { src: "images/concubine-loto.png", link: "item2.html" },
+      { src: "images/concubine-proibita.png", link: "item2.html" },
+      { src: "images/concubine-tempio.png", link: "item2.html" },
+      { src: "images/concubine-peonia.png", link: "item2.html" },
+      { src: "images/concubine-favorita.png", link: "item2.html" },
+      { src: "images/concubine-dettagli1.png", link: "item2.html" },
+      { src: "images/concubine-dettagli2.png", link: "item2.html" },
+
+      { src: "images/comb1.png", link: "item3.html" },
+      { src: "images/comb2.png", link: "item3.html" },
+      { src: "images/comb3.png", link: "item3.html" },
+      { src: "images/comb4.png", link: "item3.html" },
+      { src: "images/comb5.png", link: "item3.html" },
+
+      { src: "images/img3.jpg", link: "item4.html" },
+
+      { src: "images/img1.jpg", link: "item5.html" },
+      { src: "images/img1_1.png", link: "item5.html" },
+      { src: "images/img1_2.png", link: "item5.html" },
+      { src: "images/img1_3.png", link: "item5.html" },
+      { src: "images/img1_4.png", link: "item5.html" },
+
+      { src: "images/cadaques1.jpg", link: "item6.html" },
+      { src: "images/cadaques2.jpg", link: "item6.html" },
+      { src: "images/cadaques3.jpg", link: "item6.html" },
+      { src: "images/cadaques4.jpg", link: "item6.html" },
+      { src: "images/cadaques5.jpg", link: "item6.html" },
+      { src: "images/cadaques6.jpg", link: "item6.html" },
+      { src: "images/cadaques7.jpg", link: "item6.html" },
+      { src: "images/cadaques8.jpg", link: "item6.html" },
+      { src: "images/cadaques9.jpg", link: "item6.html" },
+      { src: "images/cadaques10.jpg", link: "item6.html" },
+      { src: "images/cadaques11.jpg", link: "item6.html" },
+      { src: "images/cadaques12.jpg", link: "item6.html" },
+      { src: "images/cadaques13.jpg", link: "item6.html" },
+      { src: "images/cadaques14.jpg", link: "item6.html" },
+      { src: "images/cadaques15.jpg", link: "item6.html" },
+      { src: "images/cadaques16.jpg", link: "item6.html" },
+      { src: "images/cadaques17.jpg", link: "item6.html" },
+      { src: "images/cadaques18.jpg", link: "item6.html" },
+      { src: "images/cadaques19.jpg", link: "item6.html" },
+      { src: "images/cadaques20.jpg", link: "item6.html" },
+
+      { src: "images/img2.jpg", link: "item7.html" }
+    ];
+
+    const viewport = document.getElementById("viewport");
+    const tiles = new Map();
+
+    let cameraX = 0;
+    let cameraY = 0;
+
+    let isDown = false;
+    let startX = 0;
+    let startY = 0;
+    let startCameraX = 0;
+    let startCameraY = 0;
+    let moved = false;
+
+    function hash2D(x, y) {
+      let h = x * 374761393 + y * 668265263;
+      h = (h ^ (h >> 13)) * 1274126177;
+      h = h ^ (h >> 16);
+      return Math.abs(h);
+    }
+
+    function mod(n, m) {
+      return ((n % m) + m) % m;
+    }
+
+    function getMetrics() {
+      const mobile = window.innerWidth < 700;
+
+      const width = mobile ? 150 : 190;
+      const height = mobile ? 195 : 245;
+
+      const gapX = mobile ? 54 : 70;
+      const gapY = mobile ? 44 : 58;
+
+      const stepX = width + gapX;
+      const stepY = height + gapY;
+
+      return { width, height, stepX, stepY };
+    }
+
+    function buildTile(col, row, metrics) {
+      const key = `${col}:${row}`;
+      const seed = hash2D(col, row);
+
+      const image = images[mod(seed, images.length)];
+      const rotate = ((seed % 5) - 2) * 0.9;
+      const sizeVariant = (seed % 3) - 1;
+
+      let w = metrics.width + sizeVariant * 12;
+      let h = metrics.height + sizeVariant * 14;
+
+      const offsetX = (row % 2) * (metrics.stepX / 2);
+      const worldX = col * metrics.stepX + offsetX;
+      const worldY = row * metrics.stepY;
+
+      const el = document.createElement("a");
+      el.className = "cell";
+      el.href = image.link;
+      el.dataset.key = key;
+      el.dataset.rotate = rotate;
+      el.dataset.hoverScale = "1.03";
+
+      el.style.width = `${w}px`;
+      el.style.height = `${h}px`;
+
+      const img = document.createElement("img");
+      img.src = image.src;
+      img.alt = "";
+
+      el.appendChild(img);
+
+      el.addEventListener("mouseenter", () => {
+        el.style.transform = `rotate(${rotate}deg) scale(1.03)`;
+      });
+
+      el.addEventListener("mouseleave", () => {
+        el.style.transform = `rotate(${rotate}deg) scale(1)`;
+      });
+
+      el.addEventListener("click", (e) => {
+        if (moved) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      });
+
+      viewport.appendChild(el);
+      tiles.set(key, {
+        el,
+        col,
+        row,
+        worldX,
+        worldY,
+        width: w,
+        height: h,
+        rotate
+      });
+    }
+
+    function updateTiles() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const metrics = getMetrics();
+      const margin = 420;
+
+      const minRow = Math.floor((cameraY - vh / 2 - margin) / metrics.stepY) - 2;
+      const maxRow = Math.ceil((cameraY + vh / 2 + margin) / metrics.stepY) + 2;
+
+      const minCol = Math.floor((cameraX - vw / 2 - margin) / metrics.stepX) - 3;
+      const maxCol = Math.ceil((cameraX + vw / 2 + margin) / metrics.stepX) + 3;
+
+      const needed = new Set();
+
+      for (let row = minRow; row <= maxRow; row++) {
+        for (let col = minCol; col <= maxCol; col++) {
+          const key = `${col}:${row}`;
+          needed.add(key);
+
+          if (!tiles.has(key)) {
+            buildTile(col, row, metrics);
+          }
+        }
+      }
+
+      tiles.forEach((tile, key) => {
+        if (!needed.has(key)) {
+          tile.el.remove();
+          tiles.delete(key);
+          return;
+        }
+
+        const screenX = tile.worldX - cameraX + vw / 2;
+        const screenY = tile.worldY - cameraY + vh / 2;
+
+        tile.el.style.left = `${screenX}px`;
+        tile.el.style.top = `${screenY}px`;
+        tile.el.style.transform = `rotate(${tile.rotate}deg) scale(1)`;
+      });
+    }
+
+    function startDrag(x, y) {
+      isDown = true;
+      moved = false;
+      startX = x;
+      startY = y;
+      startCameraX = cameraX;
+      startCameraY = cameraY;
+      document.body.classList.add("dragging");
+    }
+
+    function moveDrag(x, y) {
+      if (!isDown) return;
+
+      const dx = x - startX;
+      const dy = y - startY;
+
+      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
+        moved = true;
+      }
+
+      cameraX += (startCameraX - dx - cameraX) * 0.12;
+      cameraY += (startCameraY - dy - cameraY) * 0.12;
+
+      updateTiles();
+    }
+
+    function endDrag() {
+      isDown = false;
+      document.body.classList.remove("dragging");
+
+      requestAnimationFrame(() => {
+        moved = false;
+      });
+    }
+
+    document.addEventListener("mousedown", (e) => {
+      startDrag(e.clientX, e.clientY);
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      moveDrag(e.clientX, e.clientY);
+    });
+
+    document.addEventListener("mouseup", endDrag);
+
+    document.addEventListener("touchstart", (e) => {
+      const t = e.touches[0];
+      startDrag(t.clientX, t.clientY);
+    }, { passive: true });
+
+    document.addEventListener("touchmove", (e) => {
+      const t = e.touches[0];
+      moveDrag(t.clientX, t.clientY);
+    }, { passive: true });
+
+    document.addEventListener("touchend", endDrag);
+
+    window.addEventListener("resize", updateTiles);
+
+    updateTiles();
+  </script>
+
+</body>
+</html>
