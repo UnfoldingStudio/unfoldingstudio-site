@@ -182,6 +182,8 @@
 
     let cameraX = 0;
     let cameraY = 0;
+    let targetX = 0;
+    let targetY = 0;
 
     let isDown = false;
     let startX = 0;
@@ -317,30 +319,28 @@
     }
 
     function startDrag(x, y) {
-      isDown = true;
-      moved = false;
-      startX = x;
-      startY = y;
-      startCameraX = cameraX;
-      startCameraY = cameraY;
-      document.body.classList.add("dragging");
-    }
+  isDown = true;
+  moved = false;
+  startX = x;
+  startY = y;
+  startCameraX = targetX;
+  startCameraY = targetY;
+  document.body.classList.add("dragging");
+}
 
     function moveDrag(x, y) {
-      if (!isDown) return;
+  if (!isDown) return;
 
-      const dx = x - startX;
-      const dy = y - startY;
+  const dx = x - startX;
+  const dy = y - startY;
 
-      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
-        moved = true;
-      }
+  if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
+    moved = true;
+  }
 
-      cameraX += (startCameraX - dx - cameraX) * 0.12;
-      cameraY += (startCameraY - dy - cameraY) * 0.12;
-
-      updateTiles();
-    }
+  targetX = startCameraX - dx;
+  targetY = startCameraY - dy;
+}
 
     function endDrag() {
       isDown = false;
@@ -375,7 +375,16 @@
 
     window.addEventListener("resize", updateTiles);
 
-    updateTiles();
+function animate() {
+  cameraX += (targetX - cameraX) * 0.08;
+  cameraY += (targetY - cameraY) * 0.08;
+
+  updateTiles();
+  requestAnimationFrame(animate);
+}
+
+updateTiles();
+animate();
   </script>
 
 </body>
