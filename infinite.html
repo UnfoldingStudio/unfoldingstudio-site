@@ -127,55 +127,80 @@
   <div class="hint">Drag freely — tap an image to open its page</div>
 
   <script>
-    const images = [
-      { src: "images/bronze_culverins.jpg", link: "item1.html" },
+    const imageGroups = [
+      {
+        files: [
+          { src: "images/bronze_culverins.jpg", link: "item1.html" },
 
-      { src: "images/concubine-imperiale.png", link: "item2.html" },
-      { src: "images/concubine-loto.png", link: "item2.html" },
-      { src: "images/concubine-proibita.png", link: "item2.html" },
-      { src: "images/concubine-tempio.png", link: "item2.html" },
-      { src: "images/concubine-peonia.png", link: "item2.html" },
-      { src: "images/concubine-favorita.png", link: "item2.html" },
-      { src: "images/concubine-dettagli1.png", link: "item2.html" },
-      { src: "images/concubine-dettagli2.png", link: "item2.html" },
+          { src: "images/concubine-imperiale.png", link: "item2.html" },
+          { src: "images/concubine-loto.png", link: "item2.html" },
+          { src: "images/concubine-proibita.png", link: "item2.html" },
+          { src: "images/concubine-tempio.png", link: "item2.html" },
+          { src: "images/concubine-peonia.png", link: "item2.html" },
+          { src: "images/concubine-favorita.png", link: "item2.html" },
+          { src: "images/concubine-dettagli1.png", link: "item2.html" },
+          { src: "images/concubine-dettagli2.png", link: "item2.html" },
 
-      { src: "images/comb1.png", link: "item3.html" },
-      { src: "images/comb2.png", link: "item3.html" },
-      { src: "images/comb3.png", link: "item3.html" },
-      { src: "images/comb4.png", link: "item3.html" },
-      { src: "images/comb5.png", link: "item3.html" },
+          { src: "images/comb1.png", link: "item3.html" },
+          { src: "images/comb2.png", link: "item3.html" },
+          { src: "images/comb3.png", link: "item3.html" },
+          { src: "images/comb4.png", link: "item3.html" },
+          { src: "images/comb5.png", link: "item3.html" },
 
-      { src: "images/img3.jpg", link: "item4.html" },
+          { src: "images/img3.jpg", link: "item4.html" },
 
-      { src: "images/img1.jpg", link: "item5.html" },
-      { src: "images/img1_1.png", link: "item5.html" },
-      { src: "images/img1_2.png", link: "item5.html" },
-      { src: "images/img1_3.png", link: "item5.html" },
-      { src: "images/img1_4.png", link: "item5.html" },
+          { src: "images/img1.jpg", link: "item5.html" },
+          { src: "images/img1_1.png", link: "item5.html" },
+          { src: "images/img1_2.png", link: "item5.html" },
+          { src: "images/img1_3.png", link: "item5.html" },
+          { src: "images/img1_4.png", link: "item5.html" },
 
-      { src: "images/cadaques1.jpg", link: "item6.html" },
-      { src: "images/cadaques2.jpg", link: "item6.html" },
-      { src: "images/cadaques3.jpg", link: "item6.html" },
-      { src: "images/cadaques4.jpg", link: "item6.html" },
-      { src: "images/cadaques5.jpg", link: "item6.html" },
-      { src: "images/cadaques6.jpg", link: "item6.html" },
-      { src: "images/cadaques7.jpg", link: "item6.html" },
-      { src: "images/cadaques8.jpg", link: "item6.html" },
-      { src: "images/cadaques9.jpg", link: "item6.html" },
-      { src: "images/cadaques10.jpg", link: "item6.html" },
-      { src: "images/cadaques11.jpg", link: "item6.html" },
-      { src: "images/cadaques12.jpg", link: "item6.html" },
-      { src: "images/cadaques13.jpg", link: "item6.html" },
-      { src: "images/cadaques14.jpg", link: "item6.html" },
-      { src: "images/cadaques15.jpg", link: "item6.html" },
-      { src: "images/cadaques16.jpg", link: "item6.html" },
-      { src: "images/cadaques17.jpg", link: "item6.html" },
-      { src: "images/cadaques18.jpg", link: "item6.html" },
-      { src: "images/cadaques19.jpg", link: "item6.html" },
-      { src: "images/cadaques20.jpg", link: "item6.html" },
+          { src: "images/img2.jpg", link: "item7.html" }
+        ]
+      },
+      {
+        prefix: "cadaques",
+        count: 20,
+        ext: "jpg",
+        link: "item6.html"
+      }
 
-      { src: "images/img2.jpg", link: "item7.html" }
+      ,
+{
+  prefix: "knots",
+  count: 6,
+  ext: "png",
+  link: "item7.html"
+}
+
+      /*
+      PER AGGIUNGERE UN NUOVO GRUPPO, SCRIVI COSÌ:
+
+      ,
+      {
+        prefix: "knot",
+        count: 6,
+        ext: "jpg",
+        link: "item8.html"
+      }
+      */
     ];
+
+    const images = [];
+
+    imageGroups.forEach((group) => {
+      if (group.files) {
+        group.files.forEach((file) => images.push(file));
+        return;
+      }
+
+      for (let i = 1; i <= group.count; i++) {
+        images.push({
+          src: `images/${group.prefix}${i}.${group.ext}`,
+          link: group.link
+        });
+      }
+    });
 
     const viewport = document.getElementById("viewport");
     const tiles = new Map();
@@ -226,8 +251,8 @@
       const rotate = ((seed % 5) - 2) * 0.9;
       const sizeVariant = (seed % 3) - 1;
 
-      let w = metrics.width + sizeVariant * 12;
-      let h = metrics.height + sizeVariant * 14;
+      const w = metrics.width + sizeVariant * 12;
+      const h = metrics.height + sizeVariant * 14;
 
       const offsetX = (row % 2) * (metrics.stepX / 2);
       const worldX = col * metrics.stepX + offsetX;
@@ -236,10 +261,6 @@
       const el = document.createElement("a");
       el.className = "cell";
       el.href = image.link;
-      el.dataset.key = key;
-      el.dataset.rotate = rotate;
-      el.dataset.hoverScale = "1.03";
-
       el.style.width = `${w}px`;
       el.style.height = `${h}px`;
 
@@ -265,14 +286,11 @@
       });
 
       viewport.appendChild(el);
+
       tiles.set(key, {
         el,
-        col,
-        row,
         worldX,
         worldY,
-        width: w,
-        height: h,
         rotate
       });
     }
@@ -319,28 +337,28 @@
     }
 
     function startDrag(x, y) {
-  isDown = true;
-  moved = false;
-  startX = x;
-  startY = y;
-  startCameraX = targetX;
-  startCameraY = targetY;
-  document.body.classList.add("dragging");
-}
+      isDown = true;
+      moved = false;
+      startX = x;
+      startY = y;
+      startCameraX = targetX;
+      startCameraY = targetY;
+      document.body.classList.add("dragging");
+    }
 
     function moveDrag(x, y) {
-  if (!isDown) return;
+      if (!isDown) return;
 
-  const dx = x - startX;
-  const dy = y - startY;
+      const dx = x - startX;
+      const dy = y - startY;
 
-  if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
-    moved = true;
-  }
+      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
+        moved = true;
+      }
 
-  targetX = startCameraX - dx;
-  targetY = startCameraY - dy;
-}
+      targetX = startCameraX - dx;
+      targetY = startCameraY - dy;
+    }
 
     function endDrag() {
       isDown = false;
@@ -373,18 +391,20 @@
 
     document.addEventListener("touchend", endDrag);
 
+    document.addEventListener("touchcancel", endDrag);
+
     window.addEventListener("resize", updateTiles);
 
-function animate() {
-  cameraX += (targetX - cameraX) * 0.08;
-  cameraY += (targetY - cameraY) * 0.08;
+    function animate() {
+      cameraX += (targetX - cameraX) * 0.08;
+      cameraY += (targetY - cameraY) * 0.08;
 
-  updateTiles();
-  requestAnimationFrame(animate);
-}
+      updateTiles();
+      requestAnimationFrame(animate);
+    }
 
-updateTiles();
-animate();
+    updateTiles();
+    animate();
   </script>
 
 </body>
